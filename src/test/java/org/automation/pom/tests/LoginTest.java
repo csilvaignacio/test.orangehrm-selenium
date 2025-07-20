@@ -27,5 +27,9 @@ public class LoginTest extends BaseTest {
         //prueba
     }
 
+    @Test
+    public void test02(){
+
+    }
 
 }
