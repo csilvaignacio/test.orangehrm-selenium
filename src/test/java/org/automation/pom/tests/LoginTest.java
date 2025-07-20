@@ -23,5 +23,13 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(getDriver().getCurrentUrl().contains("/dashboard"));
         Assert.assertTrue(getDriver().getCurrentUrl().contains(ConfigLoader.getInstance().getDashboardUrl()));
         Assert.assertTrue(dashboardPage.verifySideMenuIsDisplayed());
+
+        //prueba
     }
+
+    @Test
+    public void test02(){
+
+    }
+
 }
