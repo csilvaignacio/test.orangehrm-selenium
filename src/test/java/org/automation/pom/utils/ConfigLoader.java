@@ -9,7 +9,7 @@ public class ConfigLoader {
     private static ConfigLoader configLoader;
 
     private ConfigLoader(){
-        String env = System.getProperty("environment",String.valueOf(EnvType.STAGING));
+        String env = System.getProperty("env",String.valueOf(EnvType.STAGING));
 
         switch (EnvType.valueOf(env)){
             case STAGING -> properties = PropertyUtils.propertyLoader("src/test/resources/properties/stg_config.properties");
@@ -47,5 +47,17 @@ public class ConfigLoader {
         String prop = properties.getProperty("password");
         if(prop != null) return prop;
         else throw new RuntimeException("property password is not specified in the stg_config.properties file");
+    }
+
+    public String getInvalidUsername(){
+        String prop = properties.getProperty("invalidUsername");
+        if(prop != null) return prop;
+        else throw new RuntimeException("property invalidUsername is not specified in the stg_config.properties file");
+    }
+
+    public String getInvalidPassword(){
+        String prop = properties.getProperty("password");
+        if(prop != null) return prop;
+        else throw new RuntimeException("property invalidPassword is not specified in the stg_config.properties file");
     }
 }

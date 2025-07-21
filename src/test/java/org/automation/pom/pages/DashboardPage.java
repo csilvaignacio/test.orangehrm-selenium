@@ -16,15 +16,16 @@ public class DashboardPage extends BasePage {
     }
 
     @Override
-    public void waitPageToLoad() {
+    public DashboardPage waitPageToLoad() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(sideMenu));
-
+        return this;
     }
 
     @Override
-    public void verifyPage() {
-        softAssert.assertTrue(find(sideMenu).isDisplayed());
+    public DashboardPage verifyPage() {
+        softAssert.assertTrue(findVisible(sideMenu).isDisplayed());
         softAssert.assertAll();
+        return this;
     }
 
     public DashboardPage load(){

@@ -4,21 +4,20 @@ import org.automation.pom.utils.ConfigLoader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
-public abstract class BasePage {
+public abstract class BasePage <T extends BasePage<T>> {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected WebDriverWait waitLong;
     protected SoftAssert softAssert;
 
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver,Duration.ofSeconds(5));
-        waitLong = new WebDriverWait(driver,Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         softAssert = new SoftAssert();
     }
 
@@ -26,11 +25,15 @@ public abstract class BasePage {
         driver.get(ConfigLoader.getInstance().getBaseUrl()+endPoint);
     }
 
-    public WebElement find(By locator){
-        return driver.findElement(locator);
+    public WebElement findVisible(By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public abstract void waitPageToLoad();
-    public abstract void verifyPage();
+    public WebElement findClick(By locator){
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public abstract T waitPageToLoad();
+    public abstract T verifyPage();
 
 }

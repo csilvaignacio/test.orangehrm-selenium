@@ -5,10 +5,4 @@
             <class name="org.automation.pom.tests.LoginTest"/>
         </classes>
     </test>
-    <test name="Firefox">
-        <parameter name="browser" value="FIREFOX"/>
-        <classes>
-            <class name="org.automation.pom.tests.LoginTest"/>
-        </classes>
-    </test>
 </suite>

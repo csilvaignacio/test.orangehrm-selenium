@@ -1,6 +1,7 @@
 package org.automation.pom.base;
 
 import org.automation.pom.factory.DriverManager;
+import org.automation.pom.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
